@@ -16,7 +16,7 @@ CREATE TABLE Movie (
     FOREIGN KEY (Genre) REFERENCES Genre(GenreID)
 );
 
-CREATE TABLE User (
+CREATE TABLE UserAcc (
     UserID INT PRIMARY KEY,
     Username VARCHAR(50) UNIQUE NOT NULL,
     Password VARCHAR(50) NOT NULL,
