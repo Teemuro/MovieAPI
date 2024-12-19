@@ -46,6 +46,19 @@ app.get('/movie', async (req,res) =>{
     }
 })
 
+app.post('/movie', async (req,res) => {
+
+    try {
+        await pgPool.query(
+            'INSERT INTO movie (movieid, moviename, releaseyear, genre, tag, review) VALUE ($1, $2, $3, $4, $5, $6', 
+            [movieid, moviename, releaseyear, genre, tag, review])
+        res.end();
+    } catch (error){
+        res.status(400).json({ error: error.message});
+
+    }
+})
+
 app.get('/review', async (req,res) =>{
     try {
         const result = await pgPool.query('SELECT * FROM review')
@@ -56,10 +69,34 @@ app.get('/review', async (req,res) =>{
     }
 })
 
+app.post('/review', async (req,res) => {
+    try {
+        await pgPool.query(
+            'INSERT INTO review (reviewid, username, stars, text, movideid) VALUE ($1, $2, $3, $4, $5',
+             [reviewid, username, statusbar, text, movieid])
+        res.end();
+    } catch (error){
+        res.status(400).json({ error: error.message});
+
+    }
+})
+
 app.get('/useracc', async (req,res) =>{
     try {
         const result = await pgPool.query('SELECT * FROM useracc')
         res.json({Users: result.rows});
+    } catch (error){
+        res.status(400).json({ error: error.message});
+
+    }
+})
+
+app.post('/useracc', async (req,res) => {
+    try {
+        await pgPool.query(
+            'INSERT INTO useracc (userid, username, password, yearofbirth, favoritemovie) VALUE ($1, $2, $3, $4, $5',
+             [userid, username, password, yearofbirth, favoritemovie])
+        res.end();
     } catch (error){
         res.status(400).json({ error: error.message});
 
