@@ -1,19 +1,15 @@
-CREATE TABLE Genre (
-    GenreID INT PRIMARY KEY,
-    Drama VARCHAR(50),
-    Thriller VARCHAR(50),
-    Fantasy VARCHAR(50),
-    Horror VARCHAR(50)
+CREATE TABLE Genres (
+    Genre VARCHAR(50) PRIMARY KEY
 );
 
 CREATE TABLE Movie (
     MovieID INT PRIMARY KEY,
     MovieName VARCHAR(255) NOT NULL,
     ReleaseYear INT,
-    Genre INT,
+    Genre VARCHAR(255),
     Tag VARCHAR(255),
     Review INT,
-    FOREIGN KEY (Genre) REFERENCES Genre(GenreID)
+    FOREIGN KEY (Genre) REFERENCES Genres(Genre)
 );
 
 CREATE TABLE UserAcc (
