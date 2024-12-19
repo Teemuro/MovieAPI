@@ -7,7 +7,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.listen(3001, () => {
     console.log('If you see this, the server is running!');
-});
+}); //Listens to the port and starts the server, give info to console if server is turned on.
 
 app.get('/', (req,res) => {
     res.json('Try something else. This is the root.')
@@ -21,7 +21,7 @@ app.get('/genres', async (req,res) =>{
         res.status(400).json({ error: error.message});
 
     }
-})
+}) //Gets data from genres table
 
 app.post('/genres', async (req,res) => {
     
@@ -35,7 +35,7 @@ app.post('/genres', async (req,res) => {
         res.status(400).json({ error: error.message});
 
     }
-})
+}) //Adds data to genres table
 
 app.get('/movie', async (req,res) =>{
     try {
@@ -45,7 +45,7 @@ app.get('/movie', async (req,res) =>{
         res.status(400).json({ error: error.message});
 
     }
-})
+}) //Gets movie names from the database
 
 app.post('/movie', async (req,res) => {
 
@@ -58,7 +58,7 @@ app.post('/movie', async (req,res) => {
         res.status(400).json({ error: error.message});
 
     }
-})
+}) //Post movie into the database
 
 app.get('/review', async (req,res) =>{
     try {
@@ -91,7 +91,7 @@ app.get('/useracc', async (req,res) =>{
 
     }
 })
-
+                                                                                                                                                                        //This code was made by TR aka Teemuro(EasterEgg)
 app.post('/useracc', async (req,res) => {
     try {
         await pgPool.query(
@@ -103,3 +103,4 @@ app.post('/useracc', async (req,res) => {
 
     }
 })
+//not going to comment on everything, you know how this stuff works.
